@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLS'"
 		},
+		"AzureSqlDatabaseLSNew_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseLSNew'"
+		},
 		"SampleDBLS_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SampleDBLS'"
@@ -97,6 +101,7 @@
 								"value": "@activity('DepartmentNames').output.values",
 								"type": "Expression"
 							},
+							"isSequential": false,
 							"activities": [
 								{
 									"name": "CopyEmployeeDetails",
@@ -121,15 +126,7 @@
 											"partitionOption": "None"
 										},
 										"sink": {
-											"type": "DelimitedTextSink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											},
-											"formatSettings": {
-												"type": "DelimitedTextWriteSettings",
-												"quoteAllText": true,
-												"fileExtension": ".txt"
-											}
+											"type": "AzureSqlSink"
 										},
 										"enableStaging": false,
 										"translator": {
@@ -150,7 +147,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "DelimitedText1",
+											"referenceName": "AzureSqlTable1",
 											"type": "DatasetReference",
 											"parameters": {
 												"TableName": {
@@ -169,7 +166,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SqlServerTable1')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
 			]
 		},
 		{
@@ -301,6 +298,35 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SampleDataset')]",
 				"[concat(variables('factoryId'), '/datasets/SalesLTSink')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseLSNew",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"TableName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().TableName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseLSNew')]"
 			]
 		},
 		{
@@ -479,6 +505,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureBlobStorageLS_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseLSNew')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabaseLSNew_connectionString')]"
 				}
 			},
 			"dependsOn": []

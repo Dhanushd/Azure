@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLS'"
 		},
+		"AzureSqlDatabaseLSNew_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseLSNew'"
+		},
 		"SampleDBLS_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SampleDBLS'"
@@ -72,6 +76,9 @@
 					},
 					"AzureBlobStorageLS_connectionString": {
 						"value": "[parameters('AzureBlobStorageLS_connectionString')]"
+					},
+					"AzureSqlDatabaseLSNew_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseLSNew_connectionString')]"
 					},
 					"SampleDBLS_connectionString": {
 						"value": "[parameters('SampleDBLS_connectionString')]"
