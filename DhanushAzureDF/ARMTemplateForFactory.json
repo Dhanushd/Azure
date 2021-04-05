@@ -366,7 +366,7 @@
 										"source": {
 											"type": "SqlServerSource",
 											"sqlReaderQuery": {
-												"value": "select * from  HumanResources.EmployeeDepatrmentHistory\nwhere DepartmentID=@{item().DepartmentID}",
+												"value": "select * from  HumanResources.EmployeeDepartmentHistory\nwhere DepartmentID=@{item().DepartmentID}",
 												"type": "Expression"
 											},
 											"queryTimeout": "02:00:00",
