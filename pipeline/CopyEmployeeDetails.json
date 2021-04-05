@@ -44,6 +44,7 @@
 						"value": "@activity('DepartmentNames').output.values",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "CopyEmployeeDetails",
@@ -60,20 +61,15 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": "select e.BusinessEntityID, e.JobTitle,e.BirthDate,e.HireDate,e.MaritalStatus,d.departmentid from HumanResources.Employee as e inner join HumanResources.EmployeeDepartmentHistory as d on e.BusinessEntityID=d.BusinessEntityID where DepartmentID=@{item().DepartmentID}",
+									"sqlReaderQuery": {
+										"value": "select e.BusinessEntityID, e.JobTitle,e.BirthDate,e.HireDate,e.MaritalStatus,d.departmentid from HumanResources.Employee as e inner join HumanResources.EmployeeDepartmentHistory as d on e.BusinessEntityID=d.BusinessEntityID where DepartmentID=@{item().DepartmentID}",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
-									}
+									"type": "AzureSqlSink"
 								},
 								"enableStaging": false,
 								"translator": {
@@ -93,7 +89,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DelimitedText1",
+									"referenceName": "AzureSqlTable1",
 									"type": "DatasetReference",
 									"parameters": {
 										"TableName": {
