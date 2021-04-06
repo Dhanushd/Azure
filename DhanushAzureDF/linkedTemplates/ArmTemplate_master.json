@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseLSNew'"
 		},
+		"AzureSqlDatabaseParameter_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseParameter'"
+		},
 		"AzureSqlDatabaseSampleLS_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSampleLS'"
@@ -91,14 +95,14 @@
 					"AzureSqlDatabaseLSNew_connectionString": {
 						"value": "[parameters('AzureSqlDatabaseLSNew_connectionString')]"
 					},
+					"AzureSqlDatabaseParameter_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseParameter_connectionString')]"
+					},
 					"AzureSqlDatabaseSampleLS_connectionString": {
 						"value": "[parameters('AzureSqlDatabaseSampleLS_connectionString')]"
 					},
 					"SampleDBLS_connectionString": {
 						"value": "[parameters('SampleDBLS_connectionString')]"
-					},
-					"StorageAccLS_connectionString": {
-						"value": "[parameters('StorageAccLS_connectionString')]"
 					},
 					"SqlServer1_connectionString": {
 						"value": "[parameters('SqlServer1_connectionString')]"
@@ -111,6 +115,9 @@
 					},
 					"SqlServer2_password": {
 						"value": "[parameters('SqlServer2_password')]"
+					},
+					"StorageAccLS_connectionString": {
+						"value": "[parameters('StorageAccLS_connectionString')]"
 					},
 					"SqlServer1_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"

@@ -14,6 +14,9 @@
 		"AzureSqlDatabaseLSNew_connectionString": {
 			"value": ""
 		},
+		"AzureSqlDatabaseParameter_connectionString": {
+			"value": ""
+		},
 		"AzureSqlDatabaseSampleLS_connectionString": {
 			"value": ""
 		},
