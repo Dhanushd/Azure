@@ -1,0 +1,25 @@
+{
+	"name": "AzureSqlDatabaseParameter",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"Pserver": {
+				"type": "String"
+			},
+			"Pdatabase": {
+				"type": "String"
+			},
+			"Pusername": {
+				"type": "String"
+			},
+			"Ppass": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().Pserver};Initial Catalog=@{linkedService().Pdatabase};User ID=@{linkedService().Pusername};Password=@{linkedService().Ppass}"
+		}
+	}
+}
