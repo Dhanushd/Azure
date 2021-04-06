@@ -11,9 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLS'"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
 		"AzureSqlDatabaseLSNew_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseLSNew'"
+		},
+		"AzureSqlDatabaseSampleLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSampleLS'"
 		},
 		"SampleDBLS_connectionString": {
 			"type": "secureString",
@@ -77,8 +85,14 @@
 					"AzureBlobStorageLS_connectionString": {
 						"value": "[parameters('AzureBlobStorageLS_connectionString')]"
 					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
 					"AzureSqlDatabaseLSNew_connectionString": {
 						"value": "[parameters('AzureSqlDatabaseLSNew_connectionString')]"
+					},
+					"AzureSqlDatabaseSampleLS_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSampleLS_connectionString')]"
 					},
 					"SampleDBLS_connectionString": {
 						"value": "[parameters('SampleDBLS_connectionString')]"
@@ -107,6 +121,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "DhanushAzureDF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DhanushAzureDF_ArmTemplate_0')]"
+			]
 		}
 	]
 }
