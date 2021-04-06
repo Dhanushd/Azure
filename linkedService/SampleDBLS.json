@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "Connectio string:DefaultEndpointsProtocol=https;AccountName=dhanushacc;AccountKey=bXqc+UjrvrYDPRSem2a7LvA+OND23mxFRgmWTi8jPsiB4/vG7hL+ZtXlwNefk5q39EpFm2mI2PLC8ogYumohFA==;EndpointSuffix=core.windows.net"
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=dhanushacc;AccountKey=bXqc+UjrvrYDPRSem2a7LvA+OND23mxFRgmWTi8jPsiB4/vG7hL+ZtXlwNefk5q39EpFm2mI2PLC8ogYumohFA==;EndpointSuffix=core.windows.net dhanushserver.database.windows.net"
 		}
 	}
 }
