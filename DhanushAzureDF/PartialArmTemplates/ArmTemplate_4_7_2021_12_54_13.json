@@ -1,0 +1,37 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DhanushAzureDF"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStore1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDataLakeStore",
+				"typeProperties": {
+					"dataLakeStoreUri": "https://dadlsgen1.azuredatalakestore.net/webhdfs/v1",
+					"servicePrincipalId": "065084a3-df90-4c07-8141-7101bd22ed78",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"tenant": "f3c1fdcd-ddcc-4ca4-b512-673ef9cdb9b4",
+					"subscriptionId": "a9d5dd50-031b-43f6-bbe2-fc08769ccce9",
+					"resourceGroupName": "Dhanush_LtI"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
