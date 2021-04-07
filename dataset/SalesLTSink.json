@@ -1,10 +1,6 @@
 {
 	"name": "SalesLTSink",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "StorageAccLS",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"FileName": {
 				"type": "string"
