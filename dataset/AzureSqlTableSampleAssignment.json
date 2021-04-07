@@ -2,11 +2,11 @@
 	"name": "AzureSqlTableSampleAssignment",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabaseParameter",
+			"referenceName": "AzureSqlDatabaseSamplePara",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"Pserver": "dhanushserver",
-				"Pdatabase": "SampleDB",
+				"Pserver": "dhanushserver.database.windows.net",
+				"PDatabase": "SampleDB",
 				"Pusername": "sqladmin",
 				"Ppass": "training123$"
 			}
