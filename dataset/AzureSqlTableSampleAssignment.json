@@ -1,0 +1,22 @@
+{
+	"name": "AzureSqlTableSampleAssignment",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseParameter",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Pserver": "dhanushserver",
+				"Pdatabase": "SampleDB",
+				"Pusername": "sqladmin",
+				"Ppass": "training123$"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "NewProduct"
+		}
+	}
+}
